@@ -39,20 +39,18 @@
       };
     };
 
-    homeConfigurations = {
+    homeConfigurations.myUser = home-manager.lib.homeManagerConfiguration {
       # Configuration for user lukecollins
-      lukecollins = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-          ./home.nix
-          {
-            # State version and user-specific settings
-            home.stateVersion = "24.05"; # Add the appropriate state version
-            home.username = "lukecollins";
-            home.homeDirectory = "/home/lukecollins";
-          }
-        ];
-      };
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        ./home.nix
+        {
+          # State version and user-specific settings
+          home.stateVersion = "24.05"; # Add the appropriate state version
+          home.username = "lukecollins";
+          home.homeDirectory = "/home/lukecollins";
+        }
+      ];
     };
   };
 }
