@@ -23,8 +23,6 @@ in
       myPythonEnv pkgs.home-manager
     ];
 
-    # Set the default stateVersion to the latest version
-
     # Set the file locations for the configuration files
     home.file.".config/alacritty/alacritty.toml".source = ./dotfiles/alacritty/alacritty.toml;
     home.file.".zshrc".source = ./dotfiles/.zshrc;

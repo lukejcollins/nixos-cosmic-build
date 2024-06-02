@@ -75,6 +75,7 @@
     isNormalUser = true;
     description = "Luke Collins";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   # Program configuration
@@ -91,7 +92,7 @@
     vim git gh alacritty wget docker nodejs python3 python3Packages.pip zellij pet
     shfmt postgresql docker-compose tailscale gcc direnv neofetch nodePackages.pyright
     nil nodePackages.bash-language-server zoom-us dockerfile-language-server-nodejs
-    terraform-ls clippy awscli2 typst yarn fzf spotify yaml-language-server nerdfonts
+    terraform-ls clippy awscli2 typst yarn fzf spotify yaml-language-server 
     google-chrome
     # Install emacs with packages
     (emacsWithPackagesFromUsePackage {
@@ -110,6 +111,10 @@
         epkgs.flycheck epkgs.lsp-pyright epkgs.csv-mode
       ];
     })
+  ];
+
+  fonts.packages = with pkgs; [
+    nerdfonts
   ];
 
   # Emacs overlay

@@ -23,7 +23,10 @@
 (tool-bar-mode -1)
 
 ;; Menu bar mode
-(menu-bar-mode t)
+(menu-bar-mode -1)
+
+;; Remove scroll bar
+(scroll-bar-mode -1)
 
 ;; Enable line numbers
 (global-display-line-numbers-mode 1)
