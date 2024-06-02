@@ -13,31 +13,36 @@ let
   };
 
 in
-  {
-    home.stateVersion = "24.05";  # Replace with the desired Home Manager state version
+{
+  # Home Manager configuration
+  home = {
+    stateVersion = "24.05";  # Replace with the desired Home Manager state version
 
-    home.username = "lukecollins";    # Replace with your actual username
-    home.homeDirectory = "/home/lukecollins";  # Replace with the path to your home directory
+    username = "lukecollins";    # Replace with your actual username
+    homeDirectory = "/home/lukecollins";  # Replace with the path to your home directory
 
-    home.packages = [
+    packages = [
       myPythonEnv pkgs.home-manager
     ];
 
-    xdg.desktopEntries.emacs = {
-      name = "Emacs";
-      genericName = "Editor";
-      exec = "emacsclient -c";
-      icon = "emacs";
-      terminal = false;
-      type = "Application";
-      categories = [ "Development" ];
+    # Configuration files
+    file = {
+      ".config/alacritty/alacritty.toml".source = ./dotfiles/alacritty/alacritty.toml;
+      ".zshrc".source = ./dotfiles/.zshrc;
+      ".p10k.zsh".source = ./dotfiles/.p10k.zsh;
+      ".config/direnv/direnvrc".source = ./dotfiles/direnv/direnvrc;
+      ".config/zellij/config.kdl".source = ./dotfiles/zellij/config.kdl;
+      "/powerlevel10k".source = powerlevel10kSrc;
     };
-
-    # Set the file locations for the configuration files
-    home.file.".config/alacritty/alacritty.toml".source = ./dotfiles/alacritty/alacritty.toml;
-    home.file.".zshrc".source = ./dotfiles/.zshrc;
-    home.file.".p10k.zsh".source = ./dotfiles/.p10k.zsh;
-    home.file.".config/direnv/direnvrc".source = ./dotfiles/direnv/direnvrc;
-    home.file.".config/zellij/config.kdl".source = ./dotfiles/zellij/config.kdl;
-    home.file."/powerlevel10k".source = powerlevel10kSrc;  
-  }
+  };
+  # XDG Desktop Entry for Emacs
+  xdg.desktopEntries.emacs = {
+    name = "Emacs";
+    genericName = "Editor";
+    exec = "emacsclient -c";
+    icon = "emacs";
+    terminal = false;
+    type = "Application";
+    categories = [ "Development" ];
+  };
+}
