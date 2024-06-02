@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -61,10 +61,12 @@
 
   # Sound configuration
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  hardware.ipu6 = {
-    enable = true;
-    platform = "ipu6ep";
+  hardware = {
+    pulseaudio.enable = false;
+    ipu6 = {
+      enable = true;
+      platform = "ipu6ep";
+    };
   };
 
   # Security configuration
@@ -83,9 +85,6 @@
     firefox.enable = true;
     zsh.enable = true;
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -117,13 +116,17 @@
     nerdfonts
   ];
 
-  # Emacs overlay
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = "https://github.com/nix-community/emacs-overlay/archive/d194712b55853051456bc47f39facc39d03cbc40.tar.gz";
-      sha256 = "sha256:08akyd7lvjrdl23vxnn9ql9snbn25g91pd4hn3f150m79p23lrrs";
-    }))
-  ];
+  # Nixpkgs config
+  nixpkgs = {
+    config.allowUnfree = true;
+
+    overlays = [
+      (import (builtins.fetchTarball {
+        url = "https://github.com/nix-community/emacs-overlay/archive/d194712b55853051456bc47f39facc39d03cbc40.tar.gz";
+        sha256 = "sha256:08akyd7lvjrdl23vxnn9ql9snbn25g91pd4hn3f150m79p23lrrs";
+      }))
+    ];
+  };
 
   system.stateVersion = "23.11";
 }
