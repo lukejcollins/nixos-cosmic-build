@@ -365,7 +365,9 @@
   :ensure t
   :after lsp-mode
   :commands lsp-ui-mode
-  :hook (lsp-mode . lsp-ui-mode))
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-use-childframe nil))
 
 ;; Pyright
 (use-package lsp-pyright
