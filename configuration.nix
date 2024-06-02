@@ -76,7 +76,7 @@
   users.users.lukecollins = {
     isNormalUser = true;
     description = "Luke Collins";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -88,11 +88,11 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    vim git gh alacritty wget docker nodejs python3 python3Packages.pip zellij pet
+    vim git gh alacritty wget nodejs python3 python3Packages.pip zellij pet
     shfmt postgresql docker-compose tailscale gcc direnv neofetch nodePackages.pyright
     nil nodePackages.bash-language-server zoom-us dockerfile-language-server-nodejs
     terraform-ls clippy awscli2 typst yarn fzf spotify yaml-language-server 
-    google-chrome
+    google-chrome aws-sam-cli
     # Install emacs with packages
     (emacsWithPackagesFromUsePackage {
       config = ./emacs/init.el;
@@ -127,6 +127,9 @@
       }))
     ];
   };
+
+  # Enable Docker
+  virtualisation.docker.enable = true;
 
   system.stateVersion = "23.11";
 }
