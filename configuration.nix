@@ -49,6 +49,27 @@
     };
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
+    emacs = {
+      enable = true;
+      startWithGraphical = true;
+      defaultEditor = true;
+      package = pkgs.emacsWithPackagesFromUsePackage {
+        config = ./emacs/init.el;
+        defaultInitFile = true;
+        alwaysEnsure = true;
+        alwaysTangle = true;
+        extraEmacsPackages = epkgs: [
+          epkgs.use-package epkgs.terraform-mode epkgs.flycheck epkgs.flycheck-inline
+          epkgs.dockerfile-mode epkgs.nix-mode epkgs.treemacs epkgs.markdown-mode
+          epkgs.treemacs-all-the-icons epkgs.helm epkgs.vterm epkgs.markdown-mode
+          epkgs.grip-mode epkgs.dash epkgs.s epkgs.editorconfig epkgs.autothemer
+          epkgs.rust-mode epkgs.lsp-mode epkgs.dashboard epkgs.direnv epkgs.projectile
+          epkgs.nerd-icons epkgs.doom-modeline epkgs.grip-mode epkgs.company
+          epkgs.elfeed epkgs.elfeed-protocol epkgs.catppuccin-theme epkgs.yaml-mode
+          epkgs.flycheck epkgs.lsp-pyright epkgs.csv-mode
+        ];
+      };
+    };
     printing.enable = true;
     pipewire = {
       enable = true;
@@ -93,23 +114,6 @@
     nil nodePackages.bash-language-server zoom-us dockerfile-language-server-nodejs
     terraform-ls clippy awscli2 typst yarn fzf spotify yaml-language-server 
     google-chrome aws-sam-cli
-    # Install emacs with packages
-    (emacsWithPackagesFromUsePackage {
-      config = ./emacs/init.el;
-      defaultInitFile = true;
-      alwaysEnsure = true;
-      alwaysTangle = true;
-      extraEmacsPackages = epkgs: [
-        epkgs.use-package epkgs.terraform-mode epkgs.flycheck epkgs.flycheck-inline
-        epkgs.dockerfile-mode epkgs.nix-mode epkgs.treemacs epkgs.markdown-mode
-        epkgs.treemacs-all-the-icons epkgs.helm epkgs.vterm epkgs.markdown-mode
-        epkgs.grip-mode epkgs.dash epkgs.s epkgs.editorconfig epkgs.autothemer
-        epkgs.rust-mode epkgs.lsp-mode epkgs.dashboard epkgs.direnv epkgs.projectile
-        epkgs.nerd-icons epkgs.doom-modeline epkgs.grip-mode epkgs.company
-        epkgs.elfeed epkgs.elfeed-protocol epkgs.catppuccin-theme epkgs.yaml-mode
-        epkgs.flycheck epkgs.lsp-pyright epkgs.csv-mode
-      ];
-    })
   ];
 
   fonts.packages = with pkgs; [
