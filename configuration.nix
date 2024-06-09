@@ -110,10 +110,10 @@
   # System packages
   environment.systemPackages = with pkgs; [
     vim git gh alacritty wget nodejs python3 python3Packages.pip zellij pet
-    shfmt postgresql docker-compose tailscale gcc direnv neofetch nodePackages.pyright
+    shfmt postgresql docker-compose tailscale gcc direnv neofetch pyright
     nil nodePackages.bash-language-server zoom-us dockerfile-language-server-nodejs
     terraform-ls clippy awscli2 typst yarn fzf spotify yaml-language-server 
-    google-chrome aws-sam-cli
+    google-chrome aws-sam-cli zip unzip
   ];
 
   fonts.packages = with pkgs; [
