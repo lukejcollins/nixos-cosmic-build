@@ -39,7 +39,7 @@
       LC_TIME = "en_GB.UTF-8";
     };
   };
-
+  
   # Services configuration
   services = {
     xserver = {
@@ -78,6 +78,7 @@
       pulse.enable = true;
     };
     tailscale.enable = true;
+    throttled.enable = true;
   };
 
   # Sound configuration
@@ -113,7 +114,7 @@
     shfmt postgresql docker-compose tailscale gcc direnv neofetch pyright
     nil nodePackages.bash-language-server zoom-us dockerfile-language-server-nodejs
     terraform-ls clippy awscli2 typst yarn fzf spotify yaml-language-server 
-    google-chrome aws-sam-cli zip unzip
+    google-chrome aws-sam-cli zip unzip btop
   ];
 
   fonts.packages = with pkgs; [
