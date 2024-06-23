@@ -66,10 +66,11 @@
           epkgs.rust-mode epkgs.lsp-mode epkgs.dashboard epkgs.direnv epkgs.projectile
           epkgs.nerd-icons epkgs.doom-modeline epkgs.grip-mode epkgs.company
           epkgs.elfeed epkgs.elfeed-protocol epkgs.catppuccin-theme epkgs.yaml-mode
-          epkgs.flycheck epkgs.lsp-pyright epkgs.csv-mode
+          epkgs.flycheck epkgs.lsp-pyright epkgs.csv-mode epkgs.persistent-scratch
         ];
       };
     };
+    fwupd.enable = true;
     printing.enable = true;
     pipewire = {
       enable = true;
@@ -112,9 +113,9 @@
   environment.systemPackages = with pkgs; [
     vim git gh alacritty wget nodejs python3 python3Packages.pip zellij pet
     shfmt postgresql docker-compose tailscale gcc direnv neofetch pyright
-    nil nodePackages.bash-language-server zoom-us dockerfile-language-server-nodejs
+    nil bash-language-server zoom-us dockerfile-language-server-nodejs
     terraform-ls clippy awscli2 typst yarn fzf spotify yaml-language-server 
-    google-chrome aws-sam-cli zip unzip btop
+    google-chrome zip unzip btop libfido2
   ];
 
   fonts.packages = with pkgs; [
