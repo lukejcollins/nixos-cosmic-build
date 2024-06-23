@@ -12,7 +12,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    initrd.luks.devices."luks-3de39b16-319c-4aad-a741-459caabd76de".device = "/dev/disk/by-uuid/3de39b16-319c-4aad-a741-459caabd76de";
+    kernelPackages = pkgs.linuxPackages_6_9;
   };
 
   # Networking configuration
@@ -46,7 +46,10 @@
       enable = true;
       layout = "us";
       xkbVariant = "";
+      #displayManager.gdm.enable = true;
+      #desktopManager.gnome.enable = true;
     };
+    fwupd.enable = true;
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
     emacs = {
@@ -78,17 +81,16 @@
       pulse.enable = true;
     };
     tailscale.enable = true;
-    throttled.enable = true;
   };
 
   # Sound configuration
   sound.enable = true;
   hardware = {
     pulseaudio.enable = false;
-    ipu6 = {
-      enable = true;
-      platform = "ipu6ep";
-    };
+    #ipu6 = {
+    #  enable = true;
+    #  platform = "ipu6ep";
+    #};
   };
 
   # Security configuration

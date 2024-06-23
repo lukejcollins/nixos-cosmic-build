@@ -16,7 +16,7 @@ in
 {
   # Home Manager configuration
   home = {
-    stateVersion = "24.05";  # Replace with the desired Home Manager state version
+    stateVersion = "23.05";  # Replace with the desired Home Manager state version
 
     username = "lukecollins";    # Replace with your actual username
     homeDirectory = "/home/lukecollins";  # Replace with the path to your home directory

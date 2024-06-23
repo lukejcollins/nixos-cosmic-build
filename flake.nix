@@ -14,9 +14,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # nixos-hardware flake for laptop specific config
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";    
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, home-manager }: {
+  outputs = { self, nixpkgs, nixos-cosmic, nixos-hardware, home-manager }: {
     nixosConfigurations = {
       # Configuration for mySystem
       mySystem = nixpkgs.lib.nixosSystem {
@@ -35,6 +38,8 @@
           ./configuration.nix
           # Including the home-manager NixOS module
           home-manager.nixosModules.home-manager
+          # Thinkpad P16S config from nixos-hardware flake
+          nixos-hardware.nixosModules.lenovo-thinkpad-p16s-amd-gen1
         ];
       };
     };
@@ -46,7 +51,7 @@
         ./home.nix
         {
           # State version and user-specific settings
-          home.stateVersion = "24.05"; # Add the appropriate state version
+          home.stateVersion = "23.05"; # Add the appropriate state version
           home.username = "lukecollins";
           home.homeDirectory = "/home/lukecollins";
         }
