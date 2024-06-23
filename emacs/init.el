@@ -302,6 +302,17 @@
   (setq elfeed-protocol-ttrss-maxsize 200) ;; Bigger than 200 is invalid
   (setq elfeed-protocol-ttrss-fetch-category-as-tag t))
 
+(use-package persistent-scratch
+  :ensure t
+  :config
+  ;; Set the path where the scratch buffer contents will be saved
+  (setq persistent-scratch-save-file "~/.emacs.d/persistent-scratch")
+  ;; Load the scratch buffer contents on startup
+  (persistent-scratch-setup-default)
+  ;; Switch to scratch
+  (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*"))))
+
+
 ;;; Language Configuration ;;;
 ;;----------------------------;;
 
