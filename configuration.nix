@@ -49,7 +49,6 @@
       #displayManager.gdm.enable = true;
       #desktopManager.gnome.enable = true;
     };
-    fwupd.enable = true;
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
     emacs = {
